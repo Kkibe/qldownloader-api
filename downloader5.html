@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Song Downloader</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", sans-serif;
+            line-height: 1.6em;
+            color: #666;
+            background: #e1e1e1;
+            font-size: 14px;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        /* Container */
+        #container {
+            width: 738px;
+            margin: auto;
+            background: #fff;
+        }
+
+        @media (max-width: 738px) {
+            #container {
+                width: 100%;
+            }
+        }
+
+        /* Header */
+        header {
+            padding: 30px 20px;
+            background: #f4f4f4;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        header span {
+            color: #dd2826;
+        }
+
+        header p {
+            margin-top: 10px;
+            color: #333;
+        }
+
+        /* Search Section */
+        section {
+            padding: 30px 20px;
+        }
+
+        #search-form {
+            margin-bottom: 15px;
+        }
+
+        .fieldcontainer {
+            position: relative;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .search-field {
+            width: 90%;
+            padding: 11px 7px;
+            padding-right: 43px;
+            border: 1px solid #c8c8c8;
+            background: #fff;
+            font-size: 1.6em;
+        }
+
+        .search-field:focus {
+            border-color: #dd2826;
+            outline: none;
+        }
+
+        #search-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 50px;
+            width: 50px;
+            border: none;
+            background: #dd2826;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #search-btn:hover {
+            background: #b01f1d;
+        }
+
+        /* Results */
+        #results li {
+            padding: 10px 0;
+            border-bottom: 1px dotted #ccc;
+            list-style: none;
+            overflow: auto;
+        }
+
+        .list-left {
+            float: left;
+            width: 20%;
+        }
+
+        .list-left img {
+            width: 100%;
+            padding: 3px;
+            border: 1px solid #ccc;
+        }
+
+        .list-right {
+            float: right;
+            width: 78%;
+        }
+
+        .cTitle {
+            color: #dd2826;
+        }
+
+        .clearfix {
+            clear: both;
+        }
+
+        /* Footer */
+        footer {
+            padding: 20px;
+            background: #f4f4f4;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <!-- Header -->
+        <header>
+            <h1>Download<span>Songz</span></h1>
+            <p>Search the YouTube!</p>
+        </header>
+
+        <!-- Search Section -->
+        <section>
+            <form id="search-form" onsubmit="event.preventDefault(); search();">
+                <div class="fieldcontainer">
+                    <input type="search" id="query" class="search-field" placeholder="Search YouTube...">
+                    <button type="submit" id="search-btn">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </form>
+            <ul id="results"></ul>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>Designed and Developed by SAURAV GANGULY</p>
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        function search() {
+            $('#results').html('');
+            var q = $('#query').val();
+
+            // Make a GET request to YouTube API
+            $.get(
+                'https://www.googleapis.com/youtube/v3/search',
+                {
+                    part: 'snippet,id',
+                    q: q,
+                    type: 'video',
+                    key: 'YOUR_API_KEY' // Replace with your API key
+                },
+                function (data) {
+                    $.each(data.items, function (i, item) {
+                        var output = getOutput(item);
+                        $('#results').append(output);
+                    });
+                }
+            );
+        }
+
+        function getOutput(item) {
+            var id = item.id.videoId;
+            var title = item.snippet.title;
+            var description = item.snippet.description;
+            var thumb = item.snippet.thumbnails.high.url;
+
+            var link = getLink(id);
+            var output =
+                "<li>" +
+                "<div class='list-left'>" +
+                "<img src='" +
+                thumb +
+                "'>" +
+                '</div>' +
+                "<div class='list-right'>" +
+                '<h3>' +
+                title +
+                '</h3>' +
+                "<audio controls preload='none'>" +
+                "<source src='" +
+                link +
+                "' type='audio/mpeg'>" +
+                '</audio>' +
+                '</div>' +
+                '</li>' +
+                "<div class='clearfix'></div>";
+
+            return output;
+        }
+
+        function getLink(id) {
+            var link = null;
+            $.ajax({
+                url:
+                    'https://www.youtubeinmp3.com/fetch/?format=JSON&video=https://www.youtube.com/watch?v=' +
+                    id,
+                dataType: 'json',
+                async: false,
+                success: function (data) {
+                    link = data.link;
+                }
+            });
+            return link;
+        }
+    </script>
+</body>
+</html>

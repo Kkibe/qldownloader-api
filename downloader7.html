@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Downloader</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap');
+
+    :root {
+      font-size: 16px;
+      font-family: 'Quicksand', sans-serif;
+      background: #fbfbfb;
+      --gradient: linear-gradient(to right, #ff6a00, #ee0979);
+    }
+
+    body {
+      margin: 0;
+      background-color: #fbfbfb;
+    }
+
+    .main {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .heading {
+      display: flex;
+      align-items: center;
+      font-size: 2rem;
+      font-weight: bold;
+      justify-content: center;
+    }
+
+    .logo {
+      padding: 1rem 0.4rem;
+    }
+
+    .logo-icon {
+      font-size: 3rem;
+      color: #ff6a00;
+    }
+
+    .logo-head {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+    }
+
+    .main-inp {
+      padding: 32px 0;
+    }
+
+    .main-inp input {
+      height: 2.2rem;
+      width: 40rem;
+      font-size: 1.2rem;
+      padding: 0.4rem 1.6rem;
+      color: #212121;
+      border-radius: 3rem;
+      outline: none;
+      border: 0;
+      box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.2);
+      transition: box-shadow 200ms ease-out;
+    }
+
+    .main-inp input:focus {
+      box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.2), 0px 0px 8px rgba(255, 106, 0, 0.8);
+    }
+
+    .main-inp input::placeholder {
+      color: #aaa;
+    }
+
+    .dwn {
+      box-shadow: 1px 1px 2px rgba(102, 102, 102, 0.4);
+      padding: 1.6rem;
+      cursor: pointer;
+      border-radius: 50%;
+      background: var(--gradient);
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+      transition: all 250ms ease-in-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .dwn:hover {
+      box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.4);
+      transform: scale(1.05);
+    }
+
+    .dwn-icon {
+      font-size: 1.5rem;
+      color: #ffffff;
+    }
+
+    @media screen and (max-width: 800px) {
+      .main-inp input {
+        width: 70vw;
+      }
+
+      .logo-icon {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="heading">
+      <div class="logo">
+        <span class="logo-icon">📺</span>
+      </div>
+      <div class="logo-head">YouTube Downloader</div>
+    </div>
+    <div class="main-inp">
+      <input type="text" placeholder="Enter a YouTube URL here">
+    </div>
+    <div class="dwn">
+      <span class="dwn-icon">⬇️</span>
+    </div>
+  </div>
+  <script>
+    document.querySelector('.dwn').addEventListener('click', () => {
+      const urlInput = document.querySelector('.main-inp input').value;
+      if (!urlInput) {
+        alert('Please enter a valid YouTube URL.');
+        return;
+      }
+      console.log(`Downloading video from: ${urlInput}`);
+      // Add functionality to handle the download process here
+    });
+  </script>
+</body>
+</html>

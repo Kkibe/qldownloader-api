@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Downloader</title>
+  <style>
+    * {
+      text-align: center;
+    }
+
+    body {
+      display: grid;
+      grid-template-columns: auto;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    .heading {
+      font-family: Arial, sans-serif;
+      margin-top: 40vh;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .URL-input,
+    .convert-button {
+      font-size: 1.3em;
+      padding: 10px;
+      border-radius: 4px;
+      margin: 1rem auto;
+      width: 30em;
+    }
+
+    .URL-input {
+      text-align: left;
+      border: 2px solid #eeeeee;
+      background: #eeeeee;
+      outline: none;
+    }
+
+    .URL-input:focus {
+      border-color: #0485ff;
+    }
+
+    .convert-button {
+      border: 2px solid #0485ff;
+      background: #0485ff;
+      color: white;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .convert-button:hover {
+      background: #016acc;
+      border-color: #016acc;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .URL-input,
+      .convert-button {
+        width: 100%;
+      }
+    }
+
+    .opt {
+      width: 30vw;
+      margin: 1rem auto;
+      padding: 4px;
+      border-radius: 7%;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="heading">Paste YouTube URL</h1>
+  <input class="URL-input" placeholder="https://www.youtube.com/watch?v=MtN1YnoL46Q" />
+  <select class="opt">
+    <option value="mp3">MP3</option>
+    <option value="mp4">MP4</option>
+  </select>
+
+  <button class="convert-button" id="btn">Convert</button>
+
+  <script>
+    const btn = document.getElementById('btn');
+    const URLinput = document.querySelector('.URL-input');
+    const select = document.querySelector('.opt');
+    const serverURL = 'http://localhost:4000';
+
+    btn.addEventListener('click', () => {
+      const urlValue = URLinput.value;
+      if (!urlValue) {
+        alert('Please enter a YouTube URL');
+        return;
+      }
+
+      if (select.value === 'mp3') {
+        downloadMp3(urlValue);
+      } else if (select.value === 'mp4') {
+        downloadMp4(urlValue);
+      }
+    });
+
+    async function downloadMp3(query) {
+      try {
+        const res = await fetch(`${serverURL}/downloadmp3?url=${query}`);
+        if (res.status === 200) {
+          const a = document.createElement('a');
+          a.href = `${serverURL}/downloadmp3?url=${query}`;
+          a.setAttribute('download', '');
+          a.click();
+        } else {
+          alert('Invalid URL');
+        }
+      } catch (error) {
+        alert('An error occurred while downloading MP3');
+      }
+    }
+
+    async function downloadMp4(query) {
+      try {
+        const res = await fetch(`${serverURL}/downloadmp4?url=${query}`);
+        if (res.status === 200) {
+          const a = document.createElement('a');
+          a.href = `${serverURL}/downloadmp4?url=${query}`;
+          a.setAttribute('download', '');
+          a.click();
+        } else {
+          alert('Invalid URL');
+        }
+      } catch (error) {
+        alert('An error occurred while downloading MP4');
+      }
+    }
+  </script>
+</body>
+</html>

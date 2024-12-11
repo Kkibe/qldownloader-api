@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube Downloader</title>
+    <!-- External Resources -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <style>
+        /* Fonts */
+        @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300);
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+        @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:300);
+        @import url(http://weloveiconfonts.com/api/?family=zocial);
+
+        /* Base Styles */
+        html {
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #4d4d4d;
+            line-height: 1.5;
+            text-align: center;
+            margin: 0;
+        }
+
+        a {
+            color: #4d4d4d;
+            text-decoration: none;
+        }
+
+        p {
+            color: #727272;
+        }
+
+        h2, h3, figcaption {
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* Top Navigation Styles */
+        ul.topnav {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #f2f2f2;
+            border-bottom: 1px solid #ccc;
+        }
+
+        ul.topnav li {
+            float: right;
+        }
+
+        ul.topnav li a {
+            display: inline-block;
+            color: #333;
+            text-align: center;
+            padding: 19px 16px;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        ul.topnav li a:hover {
+            background-color: #fff;
+        }
+
+        ul.topnav li.icon {
+            display: none;
+        }
+
+        @media screen and (max-width: 680px) {
+            ul.topnav li:not(:first-child) {
+                display: none;
+            }
+
+            ul.topnav li.icon {
+                float: right;
+                display: inline-block;
+            }
+
+            ul.topnav.responsive {
+                position: relative;
+            }
+
+            ul.topnav.responsive li.icon {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            ul.topnav.responsive li {
+                float: none;
+                display: inline;
+            }
+
+            ul.topnav.responsive li a {
+                display: block;
+                text-align: left;
+            }
+        }
+
+        /* Main Container */
+        #container {
+            margin: 0 auto;
+            width: 990px;
+            padding: 8px;
+        }
+
+        form {
+            padding: 0;
+            margin: 10px;
+        }
+
+        .now {
+            font-size: 14pt;
+            padding: 10px;
+            background: #1BB170;
+            border: 1px solid #17A266;
+            color: #fff;
+        }
+
+        .downloadc {
+            border: solid 1px #E5DBA0;
+            font-size: 14pt;
+            padding: 10px;
+            width: 82%;
+            outline: none;
+            background: #FFFAD6;
+        }
+
+        #result {
+            margin: 10px;
+            color: #fff;
+            font-size: 19pt;
+        }
+    </style>
+</head>
+<body>
+    <ul class="topnav" id="myTopnav">
+        <div class="wrapper">
+            <header>
+                <h1>
+                    <a href="/">
+                        <img src="https://1.bp.blogspot.com/-4ROKqoF4MTI/WGNcrViYnkI/AAAAAAAAEEk/Sqbq5DI4IBg2z9DwEymlf6GCEoNOJuRkgCLcB/s1600/logoheader.png" alt="Youtube Downloader" title="Youtube Downloader">
+                    </a>
+                </h1>
+            </header>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">About</a></li>
+            <li class="icon">
+                <a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
+            </li>
+        </div>
+    </ul>
+
+    <main id="main" class="main">
+        <section id="banner" class="banner">
+            <h2 class="banner-title">Youtube To MP3, MP4, 3GP Converter</h2>
+            <div id="container">
+                <form onsubmit="return false;">
+                    <input class="downloadc" type="text" name="q" id="q" size="40">
+                    <input class="now" type="submit" name="b" id="b" value="Download">
+                </form>
+                <div id="result">
+                    <b>Example:</b>
+                    <u style="color:#EEE389">https://www.youtube.com/watch?v=Y_xhRQXobG0</u>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function myFunction() {
+            const topnav = document.getElementById("myTopnav");
+            if (topnav.className === "topnav") {
+                topnav.className += " responsive";
+            } else {
+                topnav.className = "topnav";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Downloader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background: #f8f8f8;
+            padding: 10px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            margin: 0 10px;
+            color: #555;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .hero h1 {
+            margin-bottom: 20px;
+        }
+
+        .form-search {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .form-search input {
+            padding: 10px;
+            font-size: 16px;
+            width: 70%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-search button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .footer {
+            background: #f8f8f8;
+            padding: 10px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
+        }
+
+        .footer a {
+            margin: 0 5px;
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/">Home</a>
+        <a href="/youtube-converter">YouTube Converter</a>
+        <a href="/youtube-to-mp3">YouTube to MP3</a>
+        <a href="/faq">FAQ</a>
+    </nav>
+    <div class="container">
+        <div class="hero">
+            <h1>Download Video and Audio from YouTube</h1>
+            <form class="form-search" id="search-form">
+                <input type="text" id="txt-url" placeholder="Paste YouTube link here...">
+                <button type="button" id="btn-submit">Start</button>
+            </form>
+        </div>
+        <div id="result"></div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 YouTube Downloader</p>
+        <a href="/about">About</a>
+        <a href="/terms">Terms of Service</a>
+    </footer>
+    <script>
+        document.getElementById("btn-submit").addEventListener("click", function () {
+            const query = document.getElementById("txt-url").value.trim();
+            if (!query) {
+                alert("Please enter a URL.");
+                return;
+            }
+
+            // Simulate fetching results
+            document.getElementById("result").innerHTML = `
+                <p>Fetching results for: ${query}</p>
+                <p><strong>Tip:</strong> Insert "pp" after "youtube" in the URL for quick downloads.</p>
+            `;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    
+    <!-- Plyr CSS -->
+    <link href="https://unpkg.com/plyr@3/dist/plyr.css" rel="stylesheet">
+
+    <!-- Polyfill for older browsers -->
+    <script src="https://cdnjs.cloudflare.com/polyfill/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
+</head>
+<body>
+
+    <div class="container">
+        <video id="player" controls crossorigin playsinline poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg">
+            <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4" size="720">
+            <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4" type="video/mp4" size="1080">
+            <a href="https://social-media-downloader-nqt.herokuapp.com/video/youtube-downloader?url=https://www.youtube.com/watch?v=Ar8OzPMcdB0&format=720p" download>Download</a>
+        </video>
+    </div>
+
+    <!-- Plyr JS -->
+    <script src="https://unpkg.com/plyr@3"></script>
+
+    <script>
+        // Initialize Plyr
+        const player = new Plyr('#player', {
+            captions: { active: true }
+        });
+
+        // Expose player globally for console access
+        window.player = player;
+    </script>
+
+    <style>
+        /* Styling for the video container */
+        .container {
+            margin: 50px auto;
+            max-width: 500px;
+        }
+    </style>
+    
+</body>
+</html>

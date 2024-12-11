@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>YouTube Downloader</title>
+    <style>
+        /* Reset and box-sizing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        /* Styling for the heading and subtitle */
+        .heading {
+            font-family: Arial Black, sans-serif;
+            margin-top: 40vh;
+        }
+
+        .subtitle {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            padding: 10px;
+        }
+
+        /* Styling for the URL input field */
+        .URL-input {
+            border-radius: 4px 0 0 4px;
+            width: 35rem;
+            text-align: left;
+            border: 2px solid #eee;
+            background: #eee;
+            outline: none;
+            font-size: 1.3rem;
+            padding: 5px 10px;
+        }
+
+        .URL-input:focus {
+            border: 2px solid #FF0000;
+        }
+
+        /* Styling for the convert button */
+        .convert-button {
+            font-size: 1rem;
+            padding: 3px 7px;
+            border-radius: 0 4px 4px 0;
+            border: 2px solid #FF0000;
+            background: #FF0000;
+            color: white;
+            cursor: pointer;
+        }
+
+        .convert-button:hover {
+            background: #cc0000;
+            border-color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main content -->
+    <h1 class="heading">YouTube Downloader</h1>
+    <h2 class="subtitle">By Bgorge</h2>
+    <div>
+        <input type="text" class="URL-input" placeholder="Drop link URL">
+        <button class="convert-button">Convert</button>
+    </div>
+
+    <script>
+        // JavaScript functionality
+        var convertBtn = document.querySelector(".convert-button");
+        var URLinput = document.querySelector(".URL-input");
+
+        // Event listener for the convert button
+        convertBtn.addEventListener("click", function() {
+            console.log(`URL: ${URLinput.value}`);
+            sendURL(URLinput.value);
+        });
+
+        // Simulate sending the URL (replace with actual implementation)
+        function sendURL(url) {
+            alert(`Processing URL: ${url}`);
+        }
+    </script>
+</body>
+</html>

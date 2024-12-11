@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Suram ShivaReddy">
+  <meta name="keywords" content="ShivaReddy, Suram ShivaReddy, Suram Shiva, Shiva R'dy, youtube downloader, youtube downloader script using php">
+  <meta name="description" content="I'm Suram ShivaReddy, a web developer from India (Hyderabad). If you are looking for a good-looking responsive website, I can help you with it.">
+  <title>YouTube Downloader</title>
+  <link rel="icon" href="suramshivareddy.com/photo.png" type="image/gif">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/951d746165.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <style>
+    @media only screen and (max-width: 770px) {
+      #headerform input {
+        margin-top: -20px;
+      }
+      #headerform button {
+        display: none;
+      }
+    }
+    #related:hover, #searchdiv:hover {
+      cursor: pointer;
+    }
+    footer {
+      height: 30px;
+      margin-top: 10px;
+      background-color: #F8F8F8;
+      width: 100%;
+      text-align: center;
+      line-height: 30px;
+    }
+  </style>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    function redirectToVideo(videoId) {
+      window.location.href = `youtube.php?v=${videoId}`;
+    }
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="http://www.suramshivareddy.com/youtube.php">
+          <p class="lead text-center" style="color: black; margin-top: -5px;">YouTube Downloader</p>
+        </a>
+      </div>
+      <form id="headerform" method="post" action="youtube.php" class="navbar-form navbar-right">
+        <div class="form-group">
+          <input type="text" name="query" class="form-control" placeholder="Search or YouTube Link" autofocus>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="jumbotron text-center">
+      <h1><i class="fa fa-youtube fa-2x" style="color: #d9534f;" aria-hidden="true"></i> Downloader</h1>
+      <p class="lead">Get YouTube videos to your devices!</p>
+      <form method="post" action="youtube.php" role="search">
+        <div class="form-group">
+          <input type="text" name="query" class="form-control" placeholder="Search or Paste a YouTube Link">
+        </div>
+        <button type="submit" class="btn btn-danger btn-block">Submit</button>
+      </form>
+    </div>
+    <footer>
+      Production - <a href="https://www.facebook.com/shivareddy0">Shiva R'dy</a>
+    </footer>
+  </div>
+</body>
+</html>
